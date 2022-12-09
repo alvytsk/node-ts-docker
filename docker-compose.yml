@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  node-ts-docker-app:
+    image: node-ts-docker-dev
+    container_name: node-ts-docker-dev
+    build:
+      target: builder # development or production
+      context: .
+      dockerfile: ./Dockerfile
+    entrypoint: ['yarn', 'dev']
