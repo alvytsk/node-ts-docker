@@ -1,13 +1,12 @@
-FROM node:18-alpine AS builder
-WORKDIR /app
+FROM node:18-alpine AS development
+WORKDIR /usr/src/app
 COPY . .
 RUN yarn && yarn build
 
 FROM node:18-alpine AS production
 ENV NODE_ENV=production
 WORKDIR /app
-COPY --from=builder ./app/build ./build
 COPY package.json .
-COPY yarn.lock .
-RUN yarn install --production
-CMD [ "yarn", "start" ]
+RUN npm ci --only=production
+COPY --from=development ./app/build ./build
+CMD [ "node", "build/index.js" ]

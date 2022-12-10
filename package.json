@@ -10,11 +10,11 @@
     }
   },
   "scripts": {
-    "dev": "npx nodemon",
+    "dev": "nodemon -L src/index.ts",
     "build": "rimraf ./build && npx tsc",
     "start": "yarn build && node build/index",
-    "lint": "npx eslint ./src",
-    "lint:fix": "npx eslint ./src --fix"
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix"
   },
   "keywords": [],
   "author": "",

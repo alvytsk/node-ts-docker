@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  node-ts-docker-app:
+    image: node-ts-docker-dev
+    container_name: node-ts-docker-dev
+    build:
+      target: development # development or production
+      context: .
+      dockerfile: ./Dockerfile
+    entrypoint: ['npm', 'run', 'dev']
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: unless-stopped
