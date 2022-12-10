@@ -9,6 +9,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
     entrypoint: ['npm', 'run', 'dev']
+    ports:
+      - '3000:3000'
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
